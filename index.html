@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
   <script src="https://js.arcgis.com/4.25/"></script>
 
-  <script>  
+  <script>
+    //adding widgets and views  
     require([
       "esri/config", 
       "esri/Map", 
@@ -18,12 +19,14 @@
       "esri/widgets/Locate",
       "esri/widgets/Search"
     ], function(esriConfig, Map, MapView, BasemapGallery, Locate, Search) {   
-
+      
+      //api key and basemap set
       esriConfig.apiKey = "AAPTxy8BH1VEsoebNVZXo8HurFa5WfXMQlRQPnfNYzLFFYga1fw0U3EB74KznnD3Q-j0AB9HdCmpOghHtkHppjTP_28Gd65ao6PCq3TkG0tJ3hZXDgrukv8aAoFxebfSdW8q97PlMsrfq7nQ5seQfazEIltTu-OWRzaW7f4FLTvO2sPZ-GI21IUJHlx3EgphVNeA0XX7woV69BRNK0kyac0EPDamoSzTK8mrrLhPaWW2zQiKQ4JWB0Okf4wgrn3A9wN3AT1_R7CKhNBZ"
       const map = new Map ({
         basemap: "arcgis-dark-gray" //basemap layer
       });
 
+      //setting map view on load
       const view = new MapView({
         map: map,
         center: [-97.085569, 32.768962], // Longitude, latitude
@@ -31,6 +34,7 @@
         container: "viewDiv" // Div element
       });
 
+      //variable and container set for basemap gallery
       let basemapGallery = new BasemapGallery({
         view: view,
         container: basemapGalleryDiv
@@ -39,7 +43,7 @@
       view.ui.add(basemapGallery, {
         position: "top-right"
       });
-
+      //locate button set and created
       const locateBtn = new Locate({
           view: view
         });
@@ -49,6 +53,7 @@
         position: "top-left"
       });
 
+      //search button set and created
       const searchWidget = new Search({
         view: view
       });
